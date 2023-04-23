@@ -1,0 +1,21 @@
+pipeline {
+  agent {
+    label 'docker-agent-python'
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker build -t dockerbenson/hello-world:v1 .'
+            }
+        }
+        stage('Push') {
+            steps {
+                sh 'docker push dockerbenson/hello-world:v1'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'kubectl set image deployment/hello-world hello-world=dockerbenson/hello-world:v1'
+            }
+        }
+    }
+}
