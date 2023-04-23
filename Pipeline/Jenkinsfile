@@ -3,6 +3,11 @@ pipeline {
     label 'docker-agent-python'
   }  
     stages {
+        stage('Checkout') {
+      steps {
+        sh 'echo passed'
+        //git branch: 'main', url: 'https://github.com/Rutakara/Jenkins-ArgoCD-Project.git'
+      } 
         stage('Build') {
           environment {
              DOCKER_IMAGE = "dockerbenson/hello-world:v1"
@@ -10,6 +15,7 @@ pipeline {
              REGISTRY_CREDENTIALS = credentials('docker-cred')
           }
             steps {
+              sh 'ls -lrt'
               sh 'docker build -t ${DOCKER_IMAGE} .'
             }
         }
