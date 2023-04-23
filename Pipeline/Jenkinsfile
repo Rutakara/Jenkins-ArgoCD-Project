@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Checkout') {
              steps {
+              sh 'ls -lrt'  
               sh 'echo passed'
               //git branch: 'main', url: 'https://github.com/Rutakara/Jenkins-ArgoCD-Project.git'
          }
