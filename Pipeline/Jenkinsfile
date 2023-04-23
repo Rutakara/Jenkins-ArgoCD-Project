@@ -4,7 +4,7 @@ pipeline {
   }  
     stages {
         stage('Build') {
-          enviornment {
+          environment {
              DOCKER_IMAGE = "dockerbenson/hello-world:v1"
              // DOCKERFILE_LOCATION = "Dockerfile"
              REGISTRY_CREDENTIALS = credentials('docker-cred')
