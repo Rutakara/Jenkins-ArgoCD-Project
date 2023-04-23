@@ -4,9 +4,10 @@ pipeline {
   }  
     stages {
         stage('Checkout') {
-      steps {
-        sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/Rutakara/Jenkins-ArgoCD-Project.git'
+             steps {
+              sh 'echo passed'
+              //git branch: 'main', url: 'https://github.com/Rutakara/Jenkins-ArgoCD-Project.git'
+         }
       } 
         stage('Build') {
           environment {
