@@ -4,8 +4,13 @@ pipeline {
   }  
     stages {
         stage('Build') {
+          enviornment {
+             DOCKER_IMAGE = "dockerbenson/hello-world:v1"
+             // DOCKERFILE_LOCATION = "Dockerfile"
+             REGISTRY_CREDENTIALS = credentials('docker-cred')
+          }
             steps {
-                sh 'docker build -t dockerbenson/hello-world:v1 .'
+              sh 'docker build -t ${DOCKER_IMAGE} .'
             }
         }
         stage('Push') {
