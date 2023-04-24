@@ -4,6 +4,7 @@ pipeline {
         stage('Checkout') {
              steps {
               //git branch: 'main', url: 'https://github.com/Rutakara/Jenkins-ArgoCD-Project.git'
+             }
          }
        
         stage('Build') {
