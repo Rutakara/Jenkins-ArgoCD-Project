@@ -5,7 +5,7 @@ pipeline {
              steps {
               //git branch: 'main', url: 'https://github.com/Rutakara/Jenkins-ArgoCD-Project.git'
          }
-      } 
+       
         stage('Build') {
           environment {
              DOCKER_IMAGE = "dockerbenson/hello-world:v1"
