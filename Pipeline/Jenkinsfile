@@ -1,14 +1,36 @@
 pipeline {
-  agent any  
+  agent {
+    node {
+      label 'docker-agent-python'
+    }      
+  }
     stages {
         stage('Checkout') {
              steps {
-              sh 'ls -lrt'  
-              sh 'echo passed'
+               sh 'ls -lrt'
               //git branch: 'main', url: 'https://github.com/Rutakara/Jenkins-ArgoCD-Project.git'
          }
       } 
-        
+        stage('Build') {
+          environment {
+             DOCKER_IMAGE = "dockerbenson/hello-world:v1"
+             // DOCKERFILE_LOCATION = "Dockerfile"
+             REGISTRY_CREDENTIALS = credentials('docker-cred')
+          }
+            steps {
+              sh 'ls -lrt'
+              sh 'docker build -t ${DOCKER_IMAGE} .'
+            }
+        }
+        stage('Push') {
+            steps {
+                sh 'docker push dockerbenson/hello-world:v1'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'kubectl set image deployment/hello-world hello-world=dockerbenson/hello-world:v1'
+            }
         }
     }
 }
