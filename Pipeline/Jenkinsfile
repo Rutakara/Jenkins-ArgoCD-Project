@@ -3,11 +3,12 @@ pipeline {
     node {
       label 'docker-agent-python'
     }      
+  }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-cred')  
   }
   stages {
-        stage('Checkout') {
+        stage ('Checkout') {
              steps {
                sh 'ls -lrt'
               //git branch: 'main', url: 'https://github.com/Rutakara/Jenkins-ArgoCD-Project.git'
@@ -21,5 +22,5 @@ pipeline {
         
         }
     }
-}
+
 }
