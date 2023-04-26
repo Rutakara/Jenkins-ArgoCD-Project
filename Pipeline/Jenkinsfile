@@ -3,6 +3,8 @@ pipeline {
     node {
       label 'docker-agent-python'
     }      
+  environment {
+    DOCKERHUB_CREDENTIALS = credentials('docker-cred')  
   }
     stages {
         stage('Checkout') {
@@ -14,16 +16,9 @@ pipeline {
         }
         stage ('Build') {
              steps {
-              sh 'pip install -r requirements.txt'
+              sh 'docker build -t dockerbenson/helloworld:v1 .'
              }
-        }
-        stage ('Test') {
-             steps {
-               sh '''
-               cd Pipeline
-               python3 hello.py
-               '''
-             }
+        
         }
     }
 }
