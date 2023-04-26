@@ -3,8 +3,7 @@ pipeline {
   
   environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-cred')  
-    DOCKER_CERT_PATH=C:\Users\username.docker\machine\certs
-      }
+          }
   stages {
         stage ('Checkout') {
              steps {
