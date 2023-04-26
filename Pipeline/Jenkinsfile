@@ -6,7 +6,7 @@ pipeline {
   environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-cred')  
   }
-    stages {
+  stages {
         stage('Checkout') {
              steps {
                sh 'ls -lrt'
