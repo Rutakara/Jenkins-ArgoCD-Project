@@ -19,8 +19,10 @@ pipeline {
         }
         stage ('Test') {
              steps {
-               sh 'python3 hello.py'
-
+               sh '''
+               cd Pipeline
+               python3 hello.py
+               '''
              }
         }
     }
